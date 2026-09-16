@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xcode-select -p)",
+      "Bash(curl -L -o ~/Downloads/git-installer.pkg https://sourceforge.net/projects/git-osx-installer/files/latest/download)",
+      "Read(//Users/mr.anand/Downloads/**)"
+    ]
+  }
+}

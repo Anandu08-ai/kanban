@@ -230,6 +230,34 @@
     align-self: center;
   }
 
+  /* ============================== VIEW NAV ============================== */
+  nav.view-nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 var(--space-5);
+    display: flex;
+    gap: var(--space-5);
+  }
+
+  .view-nav-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: var(--space-3) var(--space-1);
+    margin-bottom: -1px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .view-nav-btn:hover { color: var(--uob-navy); }
+
+  .view-nav-btn[aria-selected="true"] {
+    color: var(--uob-navy);
+    border-bottom-color: var(--uob-blue);
+  }
+
   /* ============================== BOARD ============================== */
   main.board-main {
     padding: var(--space-5);
@@ -448,6 +476,282 @@
 
   .confirm-row .btn-text.confirm-yes { color: var(--critical); }
 
+  /* ============================== DASHBOARD ============================== */
+  main.dashboard-main {
+    padding: var(--space-4) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .kpi-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--uob-blue);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3) var(--space-4);
+    box-shadow: var(--shadow-sm);
+  }
+  .kpi-tile.kpi-success { border-top-color: var(--success); }
+  .kpi-tile.kpi-warning { border-top-color: var(--high); }
+  .kpi-tile.kpi-danger { border-top-color: var(--critical); }
+
+  .kpi-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--uob-navy);
+    line-height: 1.1;
+  }
+
+  .kpi-label {
+    margin-top: 2px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .kpi-sub {
+    margin-top: 1px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .panel-header {
+    padding: var(--space-2) var(--space-4);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .panel-header h2 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--uob-navy);
+  }
+
+  .panel-header p {
+    margin: 1px 0 0;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+  }
+
+  .panel-body { padding: var(--space-3) var(--space-4); }
+
+  /* ---- portfolio charts: three mini bar-charts side by side ---- */
+  .charts-row {
+    display: flex;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+  }
+  .charts-row > div { flex: 1 1 200px; min-width: 170px; }
+
+  .chart-subtitle {
+    margin: 0 0 var(--space-2);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: minmax(70px, 110px) 1fr 26px;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .bar-cat-label {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .bar-track {
+    background: var(--uob-blue-lighter);
+    border-radius: 999px;
+    height: 12px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    min-width: 4px;
+  }
+
+  .bar-value {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: right;
+  }
+
+  /* ---- stage badges: where a task currently sits ---- */
+  .stage-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-sm);
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .stage-Backlog { background: var(--low-bg); color: var(--low); }
+  .stage-In-Progress { background: var(--medium-bg); color: var(--medium); }
+  .stage-Blocked { background: var(--critical-bg); color: var(--critical); }
+  .stage-Done { background: var(--success-bg); color: var(--success); }
+
+  /* ---- priority queue: the daily-standup list, urgent items first ---- */
+  .priority-queue {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pq-row {
+    display: grid;
+    grid-template-columns: 98px 78px minmax(0, 1fr) 130px 138px;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-1);
+    border-bottom: 1px solid var(--border);
+  }
+  .pq-row:last-child { border-bottom: none; }
+
+  .pq-row.pq-urgent {
+    background: var(--critical-bg);
+    border-left: 4px solid var(--critical);
+    border-radius: var(--radius-sm);
+    padding-left: calc(var(--space-1) + 4px);
+    margin: 2px 0;
+  }
+
+  .pq-title-cell { overflow: hidden; }
+
+  .pq-title {
+    display: block;
+    font-weight: 700;
+    font-size: 0.86rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .pq-id {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .pq-project {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .pq-due {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text);
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pq-due.pq-overdue { color: var(--critical); }
+
+  @media (max-width: 760px) {
+    .pq-row {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 4px;
+    }
+    .pq-title-cell { grid-column: 1 / -1; }
+    .pq-due { text-align: left; }
+  }
+
+  .audit-log-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-height: 336px;
+    overflow-y: auto;
+  }
+
+  .audit-log-item {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .audit-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+    background: var(--uob-blue);
+  }
+  .audit-dot.audit-created { background: var(--success); }
+  .audit-dot.audit-deleted { background: var(--critical); }
+
+  .audit-text {
+    font-size: 0.82rem;
+  }
+
+  .audit-time {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  .panel-empty {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding: var(--space-2) 0;
+  }
+
+  .panel-more {
+    text-align: center;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    padding: var(--space-2) 0 0;
+  }
+
   /* ============================== MODAL ============================== */
   .modal-backdrop {
     position: fixed;
@@ -627,6 +931,14 @@
     </p>
   </header>
 
+  <!-- ============================== VIEW NAV ============================== -->
+  <nav class="view-nav" role="tablist" aria-label="Board views">
+    <button type="button" class="view-nav-btn" id="tab-board" role="tab" aria-selected="true" aria-controls="view-board">Board</button>
+    <button type="button" class="view-nav-btn" id="tab-dashboard" role="tab" aria-selected="false" aria-controls="view-dashboard">Management Dashboard</button>
+  </nav>
+
+  <div id="view-board" role="tabpanel" aria-labelledby="tab-board">
+
   <!-- ============================== FILTER BAR ============================== -->
   <section class="filter-bar" aria-label="Filter tasks">
     <div class="filter-field">
@@ -694,6 +1006,60 @@
       </section>
     </div>
   </main>
+
+  </div>
+
+  <!-- ============================== MANAGEMENT DASHBOARD ============================== -->
+  <div id="view-dashboard" role="tabpanel" aria-labelledby="tab-dashboard" hidden>
+    <main class="dashboard-main">
+
+      <section class="kpi-row" id="kpi-row" aria-label="Key performance indicators"></section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Priority queue</h2>
+          <p>Every open task, most urgent first — overdue and Critical items are highlighted. Work this list top-down in standup.</p>
+        </div>
+        <div class="panel-body">
+          <div class="priority-queue" id="priority-queue-list"></div>
+        </div>
+      </section>
+
+      <div class="dashboard-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Portfolio breakdown</h2>
+            <p>Live counts across the full task list, independent of board filters.</p>
+          </div>
+          <div class="panel-body charts-row">
+            <div>
+              <h3 class="chart-subtitle">By status</h3>
+              <div class="bar-chart" id="chart-status"></div>
+            </div>
+            <div>
+              <h3 class="chart-subtitle">By priority</h3>
+              <div class="bar-chart" id="chart-priority"></div>
+            </div>
+            <div>
+              <h3 class="chart-subtitle">By project</h3>
+              <div class="bar-chart" id="chart-project"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Audit log</h2>
+            <p>Session activity — resets on refresh, same as the board.</p>
+          </div>
+          <div class="panel-body">
+            <ul class="audit-log-list" id="audit-log-list"></ul>
+          </div>
+        </section>
+      </div>
+
+    </main>
+  </div>
 
   <footer class="app-footer">
     UOB IT PMO Kanban Board — internal training/demo tool. Not an official UOB system.
@@ -831,13 +1197,16 @@
       { id: "UOB-ITPM-0007", title: "SWIFT gateway failover DR test", description: "Execute the scheduled DR failover test for the SWIFT payment gateway and document results.", project: "Infrastructure & Cloud", category: "Infrastructure", assignee: "Ryan Goh", priority: "Critical", dueDate: "2026-09-25", status: "Blocked" },
       { id: "UOB-ITPM-0008", title: "Close out PCI-DSS quarterly access review", description: "Complete quarterly access recertification for systems in PCI-DSS scope and file evidence.", project: "Cybersecurity Uplift", category: "Compliance", assignee: "Hui Fang Koh", priority: "High", dueDate: "2026-08-30", status: "Done" }
     ],
-    filters: { project: "", assignee: "", priority: "" }
+    filters: { project: "", assignee: "", priority: "" },
+    auditLog: [] // session-only activity trail; not persisted — resets on refresh
   };
 
   let idCounter = 9; // seed occupies UOB-ITPM-0001..0008
   let pendingDeleteId = null; // task id currently showing the inline delete confirm row
   let draggedTaskId = null;
   let isSubmitting = false;
+
+  const MAX_AUDIT_ENTRIES = 200;
 
   // ============================================================================
   // HELPERS
@@ -866,10 +1235,38 @@
     return "priority-" + priority.toLowerCase();
   }
 
+  function stageClass(status) {
+    return "stage-" + status.replace(/\s+/g, "-");
+  }
+
   function formatDate(iso) {
     const d = new Date(iso + "T00:00:00");
     if (Number.isNaN(d.getTime())) return escapeHtml(iso);
     return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  }
+
+  function relativeTime(ts) {
+    const mins = Math.floor((Date.now() - ts) / 60000);
+    if (mins < 1) return "just now";
+    if (mins < 60) return `${mins}m ago`;
+    const hrs = Math.floor(mins / 60);
+    if (hrs < 24) return `${hrs}h ago`;
+    return new Date(ts).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  }
+
+  // ============================================================================
+  // AUDIT LOG — in-memory activity trail, most-recent first, capped in size.
+  // ============================================================================
+  function logAudit(type, task, detail) {
+    state.auditLog.unshift({
+      id: `al-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+      type, // "created" | "moved" | "deleted"
+      timestamp: Date.now(),
+      taskId: task.id,
+      taskTitle: task.title,
+      detail
+    });
+    if (state.auditLog.length > MAX_AUDIT_ENTRIES) state.auditLog.length = MAX_AUDIT_ENTRIES;
   }
 
   // ============================================================================
@@ -947,6 +1344,7 @@
     });
 
     renderSummaryStrip();
+    renderDashboard();
   }
 
   function renderSummaryStrip() {
@@ -966,12 +1364,169 @@
   }
 
   // ============================================================================
+  // MANAGEMENT DASHBOARD — KPIs, portfolio charts, next actions, audit log.
+  // Reads state.tasks / state.auditLog directly (ignores board filters, since
+  // this view answers "how is the whole portfolio doing", not "what am I
+  // looking at right now"). renderDashboard() is the only place that rebuilds
+  // dashboard DOM, mirroring how renderBoard() owns the card DOM.
+  // ============================================================================
+  function computeKpis() {
+    const tasks = state.tasks;
+    const total = tasks.length;
+    const done = tasks.filter((t) => t.status === "Done").length;
+    const open = total - done;
+    const completionRate = total ? Math.round((done / total) * 100) : 0;
+    const overdue = tasks.filter(isOverdue).length;
+    const blocked = tasks.filter((t) => t.status === "Blocked").length;
+    const criticalHighOpen = tasks.filter(
+      (t) => t.status !== "Done" && (t.priority === "Critical" || t.priority === "High")
+    ).length;
+    return { total, open, done, completionRate, overdue, blocked, criticalHighOpen };
+  }
+
+  function renderKpiRow() {
+    const k = computeKpis();
+    const tiles = [
+      { value: k.open, label: "Open tasks", sub: `${k.total} total in portfolio`, cls: "" },
+      { value: `${k.completionRate}%`, label: "Completion rate", sub: `${k.done} of ${k.total} done`, cls: "kpi-success" },
+      { value: k.overdue, label: "Overdue", sub: "Past due date, not yet done", cls: k.overdue ? "kpi-danger" : "" },
+      { value: k.blocked, label: "Blocked", sub: "Stuck in the Blocked column", cls: k.blocked ? "kpi-warning" : "" },
+      { value: k.criticalHighOpen, label: "Critical & High open", sub: "Needs leadership attention", cls: k.criticalHighOpen ? "kpi-warning" : "" }
+    ];
+    document.getElementById("kpi-row").innerHTML = tiles.map((t) => `
+      <div class="kpi-tile ${t.cls}">
+        <div class="kpi-value">${t.value}</div>
+        <div class="kpi-label">${escapeHtml(t.label)}</div>
+        <div class="kpi-sub">${escapeHtml(t.sub)}</div>
+      </div>
+    `).join("");
+  }
+
+  function renderBarChart(containerId, rows) {
+    const el = document.getElementById(containerId);
+    if (!rows.length) {
+      el.innerHTML = `<p class="panel-empty">No data.</p>`;
+      return;
+    }
+    const max = Math.max(...rows.map((r) => r.value), 1);
+    el.innerHTML = rows.map((r) => `
+      <div class="bar-row">
+        <span class="bar-cat-label" title="${escapeHtml(r.label)}">${escapeHtml(r.label)}</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${Math.round((r.value / max) * 100)}%; background:${r.color};"></div>
+        </div>
+        <span class="bar-value">${r.value}</span>
+      </div>
+    `).join("");
+  }
+
+  function renderPortfolioCharts() {
+    const tasks = state.tasks;
+
+    renderBarChart("chart-status", COLUMNS.map((status) => ({
+      label: status,
+      value: tasks.filter((t) => t.status === status).length,
+      color: "var(--uob-blue)"
+    })));
+
+    renderBarChart("chart-priority", ["Critical", "High", "Medium", "Low"].map((priority) => ({
+      label: priority,
+      value: tasks.filter((t) => t.priority === priority).length,
+      color: `var(--${priority.toLowerCase()})`
+    })));
+
+    const projects = [...new Set(tasks.map((t) => t.project))]
+      .sort((a, b) => tasks.filter((t) => t.project === b).length - tasks.filter((t) => t.project === a).length);
+    renderBarChart("chart-project", projects.map((project) => ({
+      label: project,
+      value: tasks.filter((t) => t.project === project).length,
+      color: "var(--uob-blue-mid)"
+    })));
+  }
+
+  // Overdue tasks always lead; among the rest, Critical/High severity comes
+  // before Medium/Low, then earliest due date — this is what "prioritise for
+  // standup" means: the riskiest items surface without anyone having to sort.
+  const PRIORITY_RANK = { Critical: 0, High: 1, Medium: 2, Low: 3 };
+  const PRIORITY_QUEUE_LIMIT = 6;
+
+  function renderPriorityQueue() {
+    const list = document.getElementById("priority-queue-list");
+    const open = state.tasks.filter((t) => t.status !== "Done");
+    const items = open
+      .slice()
+      .sort((a, b) => {
+        const overdueDiff = Number(isOverdue(b)) - Number(isOverdue(a));
+        if (overdueDiff !== 0) return overdueDiff;
+        const rankDiff = PRIORITY_RANK[a.priority] - PRIORITY_RANK[b.priority];
+        if (rankDiff !== 0) return rankDiff;
+        return a.dueDate.localeCompare(b.dueDate);
+      })
+      .slice(0, PRIORITY_QUEUE_LIMIT);
+
+    if (!items.length) {
+      list.innerHTML = `<p class="panel-empty">No open tasks — the board is clear.</p>`;
+      return;
+    }
+
+    const rows = items.map((t) => {
+      const urgent = isOverdue(t) || t.priority === "Critical";
+      return `
+        <div class="pq-row ${urgent ? "pq-urgent" : ""}">
+          <span class="stage-badge ${stageClass(t.status)}">${escapeHtml(t.status)}</span>
+          <span class="pill pill-${t.priority.toLowerCase()}">${escapeHtml(t.priority)}</span>
+          <span class="pq-title-cell">
+            <span class="pq-title">${escapeHtml(t.title)}</span>
+            <span class="pq-id">${escapeHtml(t.id)} · ${escapeHtml(t.assignee)}</span>
+          </span>
+          <span class="pq-project">${escapeHtml(t.project)}</span>
+          <span class="pq-due ${isOverdue(t) ? "pq-overdue" : ""}">${isOverdue(t) ? "⚠ " : "Due "}${formatDate(t.dueDate)}</span>
+        </div>
+      `;
+    }).join("");
+
+    const overflow = open.length - items.length;
+    const more = overflow > 0
+      ? `<p class="panel-more">+${overflow} more open task${overflow === 1 ? "" : "s"} on the board</p>`
+      : "";
+
+    list.innerHTML = rows + more;
+  }
+
+  function renderAuditLog() {
+    const list = document.getElementById("audit-log-list");
+    if (!state.auditLog.length) {
+      list.innerHTML = `<li class="panel-empty">No activity yet this session.</li>`;
+      return;
+    }
+    const verb = { created: "created", moved: "moved", deleted: "deleted" };
+    list.innerHTML = state.auditLog.slice(0, 25).map((entry) => `
+      <li class="audit-log-item">
+        <span class="audit-dot audit-${entry.type}"></span>
+        <span class="audit-text">
+          <strong>${escapeHtml(entry.taskId)}</strong> ${verb[entry.type]} — ${escapeHtml(entry.taskTitle)}
+          <span class="audit-time">${escapeHtml(entry.detail)} · ${relativeTime(entry.timestamp)}</span>
+        </span>
+      </li>
+    `).join("");
+  }
+
+  function renderDashboard() {
+    renderKpiRow();
+    renderPriorityQueue();
+    renderPortfolioCharts();
+    renderAuditLog();
+  }
+
+  // ============================================================================
   // TASK ACTIONS
   // ============================================================================
   function moveTask(taskId, newStatus) {
     const task = state.tasks.find((t) => t.id === taskId);
-    if (!task || !COLUMNS.includes(newStatus)) return;
+    if (!task || !COLUMNS.includes(newStatus) || task.status === newStatus) return;
+    const previousStatus = task.status;
     task.status = newStatus;
+    logAudit("moved", task, `${previousStatus} → ${newStatus}`);
     renderBoard();
   }
 
@@ -986,8 +1541,10 @@
   }
 
   function deleteTask(taskId) {
+    const task = state.tasks.find((t) => t.id === taskId);
     state.tasks = state.tasks.filter((t) => t.id !== taskId);
     pendingDeleteId = null;
+    if (task) logAudit("deleted", task, `Removed from ${task.status}`);
     renderBoard();
   }
 
@@ -1064,6 +1621,7 @@
     // Optimistic UI: the task is created and rendered on the board immediately.
     const task = { id: nextTaskId(), ...data };
     state.tasks.push(task);
+    logAudit("created", task, `Created in ${task.status}`);
     renderBoard();
     clearFormErrors();
     form.reset();
@@ -1227,6 +1785,25 @@
       draggedTaskId = null;
     });
   });
+
+  // ============================================================================
+  // VIEW NAV — switch between the drag-and-drop board and the dashboard.
+  // ============================================================================
+  const tabBoard = document.getElementById("tab-board");
+  const tabDashboard = document.getElementById("tab-dashboard");
+  const viewBoard = document.getElementById("view-board");
+  const viewDashboard = document.getElementById("view-dashboard");
+
+  function switchView(view) {
+    const showDashboard = view === "dashboard";
+    viewBoard.hidden = showDashboard;
+    viewDashboard.hidden = !showDashboard;
+    tabBoard.setAttribute("aria-selected", String(!showDashboard));
+    tabDashboard.setAttribute("aria-selected", String(showDashboard));
+  }
+
+  tabBoard.addEventListener("click", () => switchView("board"));
+  tabDashboard.addEventListener("click", () => switchView("dashboard"));
 
   // ============================================================================
   // INIT
